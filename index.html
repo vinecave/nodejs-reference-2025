@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Node.js Technology Reference</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .tech {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        .tech:hover {
+            transform: translateY(-2px);
+        }
+        .tech h3 {
+            margin-top: 0;
+            color: #2980b9;
+            font-size: 1.4em;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 20px 0;
+        }
+        @media (max-width: 1200px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        ul {
+            padding-left: 25px;
+            margin: 10px 0;
+        }
+        li {
+            margin: 5px 0;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .connection {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .warning {
+            background-color: #fff3cd;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 12px 0;
+            border-left: 4px solid #ffc107;
+        }
+        .workflow {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: monospace;
+            line-height: 1.4;
+        }
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+        .usage-guide {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .usage-guide ol {
+            margin: 10px 0;
+        }
+        .usage-guide li {
+            margin: 8px 0;
+        }
+        .conflicts {
+            background-color: #ffe8e8;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 12px 0;
+            border-left: 4px solid #dc3545;
+        }
+        .status {
+            background-color: #e8f5e9;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 12px 0;
+            border-left: 4px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+    <h1>Complete Node.js Technology Reference</h1>
+
+    <div class="grid">
+        <!-- Column 1 -->
+        <div class="column">
+            <!-- Vite -->
+            <div class="tech">
+                <h3>Vite</h3>
+                <p><strong>Purpose:</strong> Ultra-fast modern frontend build tool</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Dev Server: Instant Hot Module Replacement (HMR) with native ESM</li>
+                    <li>Production Build: Bundles code with Rollup</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li>Source code (JS/TS/JSX/Vue/Svelte files)</li>
+                    <li><code>vite.config.js</code> (configuration)</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Dev: Unbundled development server (http://localhost:3000)</li>
+                    <li>Prod: Optimized assets in <code>/dist</code> folder</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>↔ <strong>PostCSS/Tailwind</strong>: Processes CSS through configured plugins</li>
+                        <li>↔ <strong>React/Vue</strong>: Framework-specific plugins (<code>@vitejs/plugin-react</code>)</li>
+                        <li>↔ <strong>Express</strong>: Proxies API requests in development</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Webpack (build tool choice)</li>
+                        <li>Some CommonJS modules</li>
+                        <li>Certain legacy plugins</li>
+                        <li>Some testing setups</li>
+                    </ul>
+                </div>
+                <div class="status">
+                    <strong>Status:</strong> Fresh
+                    <ul>
+                        <li>Modern build tool gaining rapid adoption</li>
+                        <li>Excellent developer experience</li>
+                        <li>Strong community support</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> May require additional configuration for legacy projects
+                </div>
+            </div>
+
+            <!-- React -->
+            <div class="tech">
+                <h3>React</h3>
+                <p><strong>Purpose:</strong> Component-based UI library</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Manages state/props to render interactive UIs</li>
+                    <li>Virtual DOM for efficient updates</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li>JSX components (<code>&lt;Button /&gt;</code>)</li>
+                    <li>State (hooks/context)</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>DOM updates</li>
+                    <li>SSR: HTML strings (Next.js)</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>↔ <strong>Vite</strong>: Dev server handles JSX transforms</li>
+                        <li>↔ <strong>Tailwind</strong>: Applies utility classes to components</li>
+                        <li>→ <strong>Next.js</strong>: Used as core rendering engine</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Direct DOM manipulation</li>
+                        <li>Some CSS-in-JS solutions</li>
+                        <li>Legacy class-based components</li>
+                    </ul>
+                </div>
+                <div class="status">
+                    <strong>Status:</strong> Actual
+                    <ul>
+                        <li>Industry standard for UI development</li>
+                        <li>Strong ecosystem and community</li>
+                        <li>Regular updates and improvements</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Learning curve for complex state management
+                </div>
+            </div>
+
+            <!-- Next.js -->
+            <div class="tech">
+                <h3>Next.js</h3>
+                <p><strong>Purpose:</strong> React framework for production</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>SSR/SSG: Pre-renders pages at build/request time</li>
+                    <li>File-based routing (<code>pages/about.js</code>)</li>
+                    <li>API routes (<code>pages/api/</code>)</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li>React components</li>
+                    <li><code>next.config.js</code> (custom settings)</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Static HTML (SSG)</li>
+                    <li>Dynamic pages (SSR)</li>
+                    <li>Serverless functions (API routes)</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>← <strong>React</strong>: Core rendering engine</li>
+                        <li>→ <strong>Vercel</strong>: Optimized deployment platform</li>
+                        <li>↔ <strong>Tailwind</strong>: CSS processing</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Client-side only React apps</li>
+                        <li>Some static site generators</li>
+                        <li>Certain routing libraries</li>
+                    </ul>
+                </div>
+                <div class="status">
+                    <strong>Status:</strong> Fresh
+                    <ul>
+                        <li>Leading React framework</li>
+                        <li>Strong Vercel backing</li>
+                        <li>Active development and updates</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> SSR requires Node.js server
+                </div>
+            </div>
+
+            <!-- Vue -->
+            <div class="tech">
+                <h3>Vue</h3>
+                <p><strong>Purpose:</strong> Progressive JavaScript framework</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Reactive component system</li>
+                    <li>Single File Components (.vue files)</li>
+                    <li>Options/Composition API</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li><code>.vue</code> files (template/script/style)</li>
+                    <li>Reactive state (ref/reactive)</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>DOM rendering</li>
+                    <li>SSR capabilities (with Nuxt.js)</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>↔ <strong>Vite</strong>: First-class Vue support</li>
+                        <li>→ <strong>Nuxt.js</strong>: Full-stack framework</li>
+                        <li>← <strong>Tailwind</strong>: CSS utility classes</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>React-specific libraries</li>
+                        <li>Some state management patterns</li>
+                        <li>Certain build tool configurations</li>
+                    </ul>
+                </div>
+                <div class="status">
+                    <strong>Status:</strong> Actual
+                    <ul>
+                        <li>Mature and stable framework</li>
+                        <li>Strong community support</li>
+                        <li>Regular updates and improvements</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Options API vs Composition API choice
+                </div>
+            </div>
+
+            <!-- Express -->
+            <div class="tech">
+                <h3>Express</h3>
+                <p><strong>Purpose:</strong> Minimal web server framework</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Handles HTTP requests/routing</li>
+                    <li>Middleware pipeline (auth, logging)</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li>Incoming HTTP requests</li>
+                    <li>Middleware functions</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>JSON/HTML responses</li>
+                    <li>Static file serving</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>↔ <strong>Vite</strong>: Proxy API requests in dev</li>
+                        <li>↔ <strong>PM2</strong>: Process manager in production</li>
+                        <li>← <strong>Node Polyfills</strong>: May be needed for some middleware</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Some framework-specific middleware</li>
+                        <li>Certain SSR setups</li>
+                        <li>Some build tool configurations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- NestJS -->
+            <div class="tech">
+                <h3>NestJS</h3>
+                <p><strong>Purpose:</strong> Enterprise Node.js framework</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>DI (Dependency Injection) container</li>
+                    <li>Modular architecture (Controllers ↔ Services)</li>
+                    <li>Built-in support for GraphQL, WebSockets</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li>TypeScript decorators (<code>@Get()</code>, <code>@Injectable()</code>)</li>
+                    <li>Modules (<code>@Module()</code> decorator)</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>REST/GraphQL APIs</li>
+                    <li>Microservices ready</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>← <strong>Express/Fastify</strong>: Underlying HTTP adapter</li>
+                        <li>→ <strong>TypeORM/Prisma</strong>: Common database integrations</li>
+                        <li>↔ <strong>PM2</strong>: Process management in production</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Some Express middleware</li>
+                        <li>Certain testing frameworks</li>
+                        <li>Some build tool configurations</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Steeper learning curve than Express
+                </div>
+            </div>
+
+            <!-- npm -->
+            <div class="tech">
+                <h3>npm</h3>
+                <p><strong>Purpose:</strong> Node package manager (original)</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Installs packages to <code>node_modules</code></li>
+                    <li>Generates <code>package-lock.json</code></li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li><code>package.json</code> dependencies</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Flat dependency tree (v3+)</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>→ <strong>Node.js</strong>: Bundled with Node installer</li>
+                        <li>← <strong>Registry</strong>: npmjs.com by default</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>yarn lock files</li>
+                        <li>pnpm lock files</li>
+                        <li>Some workspace features</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Duplicates packages in deep trees
+                </div>
+            </div>
+
+            <!-- yarn -->
+            <div class="tech">
+                <h3>yarn</h3>
+                <p><strong>Purpose:</strong> Faster, more secure package manager</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Plug'n'Play (PnP): No <code>node_modules</code></li>
+                    <li>Zero-install (commits cache to git)</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li><code>yarn.lock</code> deterministic resolutions</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li><code>.pnp.cjs</code> resolution map</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>→ <strong>Monorepos</strong>: Workspaces support</li>
+                        <li>← <strong>Berry (v2+)</strong>: Plugin architecture</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>npm lock files</li>
+                        <li>pnpm lock files</li>
+                        <li>Some native modules</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> PnP breaks some native modules
+                </div>
+            </div>
+
+            <!-- pnpm -->
+            <div class="tech">
+                <h3>pnpm</h3>
+                <p><strong>Purpose:</strong> Disk-efficient package manager</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Hard links to global store (<code>~/.pnpm-store</code>)</li>
+                    <li>Isolated dependencies via symlinks</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li><code>pnpm-lock.yaml</code></li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Non-flat <code>node_modules</code> structure</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>→ <strong>Monorepos</strong>: Built-in workspace support</li>
+                        <li>← <strong>CI Systems</strong>: Faster installs than npm/yarn</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>npm lock files</li>
+                        <li>yarn lock files</li>
+                        <li>Some legacy packages</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Confuses some ESLint configs
+                </div>
+            </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="column">
+            <!-- ESM -->
+            <div class="tech">
+                <h3>ESM (ECMAScript Modules)</h3>
+                <p><strong>Purpose:</strong> Modern JavaScript module standard</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Enables static <code>import/export</code> syntax</li>
+                    <li>Supports top-level await</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li><code>.mjs</code> files or <code>"type": "module"</code> in package.json</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Tree-shakeable bundles (better optimization)</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>→ <strong>Vite/Rollup</strong>: Prefers ESM for code splitting</li>
+                        <li>← <strong>Node.js</strong>: Requires v12+ for full support</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>CommonJS modules</li>
+                        <li>Some legacy packages</li>
+                        <li>Certain build tool setups</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Cannot mix ESM/CJS in same file
+                </div>
+            </div>
+
+            <!-- CommonJS -->
+            <div class="tech">
+                <h3>CommonJS</h3>
+                <p><strong>Purpose:</strong> Legacy Node.js module system</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Synchronous <code>require()</code>/<code>module.exports</code></li>
+                    <li>Runtime resolution</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li><code>.js</code> or <code>.cjs</code> files</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Loaded modules in execution order</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>→ <strong>Legacy Packages</strong>: Most npm packages still use CJS</li>
+                        <li>← <strong>Babel/Webpack</strong>: Can transpile ESM→CJS</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>ESM modules</li>
+                        <li>Some build tool configurations</li>
+                        <li>Certain framework features</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> No static analysis possible
+                </div>
+            </div>
+
+            <!-- TailwindCSS -->
+            <div class="tech">
+                <h3>TailwindCSS</h3>
+                <p><strong>Purpose:</strong> Utility-first CSS framework</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Generates atomic CSS classes (e.g., <code>bg-blue-500</code>)</li>
+                    <li>JIT compiler creates styles on-demand</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li><code>tailwind.config.js</code> (design system config)</li>
+                    <li>HTML/JSX files (scanning for class names)</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Optimized CSS file (e.g., <code>main.css</code>)</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>→ <strong>PostCSS</strong>: Required for processing</li>
+                        <li>← <strong>Vite/Webpack</strong>: Watches template files for class changes</li>
+                        <li>↔ <strong>React/Vue</strong>: Used in component markup</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Some CSS-in-JS solutions</li>
+                        <li>Certain design systems</li>
+                        <li>Some CSS module configurations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PostCSS -->
+            <div class="tech">
+                <h3>PostCSS</h3>
+                <p><strong>Purpose:</strong> CSS transformation tool</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Processes CSS with JavaScript plugins</li>
+                    <li>Enables future CSS features</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li>CSS files</li>
+                    <li><code>postcss.config.js</code> (plugin configuration)</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Transformed CSS with vendor prefixes</li>
+                    <li>Optimized and minified styles</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>→ <strong>TailwindCSS</strong>: Core processing engine</li>
+                        <li>← <strong>Vite/Webpack</strong>: CSS processing pipeline</li>
+                        <li>↔ <strong>Autoprefixer</strong>: Common plugin for browser compatibility</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Some CSS-in-JS solutions</li>
+                        <li>Certain build tool configurations</li>
+                        <li>Some framework-specific CSS tools</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Node Polyfills -->
+            <div class="tech">
+                <h3>Node Polyfills</h3>
+                <p><strong>Purpose:</strong> Provide browser APIs in Node</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Shim globals (<code>window</code> → <code>globalThis</code>)</li>
+                    <li>Implement Web APIs (fetch, Blob)</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li>Packages like <code>node-fetch</code>, <code>buffer</code></li>
+                    <li>Vite/Webpack plugins</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Browser-compatible code in SSR</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>← <strong>Vite</strong>: <code>@vitejs/plugin-node-polyfills</code></li>
+                        <li>→ <strong>Next.js/Nuxt.js</strong>: Automatic in frameworks</li>
+                        <li>↔ <strong>Express</strong>: May need for certain middleware</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Native Node.js modules</li>
+                        <li>Some ESM-only packages</li>
+                        <li>Certain build tool configurations</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Increases bundle size
+                </div>
+            </div>
+
+            <!-- Nuxt.js -->
+            <div class="tech">
+                <h3>Nuxt.js</h3>
+                <p><strong>Purpose:</strong> Vue.js meta-framework for production</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>SSR/SSG out-of-the-box with Vue 3</li>
+                    <li>Auto-imports components and composables</li>
+                    <li>File-based routing and layouts</li>
+                    <li>Built-in state management</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li>Vue SFCs (<code>*.vue</code> files)</li>
+                    <li><code>nuxt.config.ts</code> (framework configuration)</li>
+                    <li>API routes in <code>server/api/</code></li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Hybrid rendered pages (client/server)</li>
+                    <li>Static site generation (SSG)</li>
+                    <li>Serverless API endpoints</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>← <strong>Vue 3</strong>: Core rendering engine</li>
+                        <li>↔ <strong>Vite/Webpack</strong>: Build system choice</li>
+                        <li>→ <strong>Nitro Engine</strong>: Serverless deployment ready</li>
+                        <li>↔ <strong>TailwindCSS</strong>: CSS processing</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Some Vue plugins (require Nuxt versions)</li>
+                        <li>Certain SSR configurations</li>
+                        <li>Some build tool setups</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Some Vue plugins may need Nuxt-specific versions
+                </div>
+            </div>
+
+            <!-- Webpack -->
+            <div class="tech">
+                <h3>Webpack</h3>
+                <p><strong>Purpose:</strong> JavaScript module bundler and build tool</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Bundles JavaScript modules and assets</li>
+                    <li>Code splitting and lazy loading</li>
+                    <li>Asset optimization and minification</li>
+                    <li>Development server with HMR</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li>JavaScript/TypeScript modules</li>
+                    <li><code>webpack.config.js</code> (configuration)</li>
+                    <li>Loaders for different file types</li>
+                    <li>Plugins for additional functionality</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Optimized bundles in <code>/dist</code></li>
+                    <li>Source maps for debugging</li>
+                    <li>Asset manifest for cache busting</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>↔ <strong>Babel</strong>: JavaScript transpilation</li>
+                        <li>↔ <strong>PostCSS</strong>: CSS processing</li>
+                        <li>→ <strong>Next.js/Nuxt.js</strong>: Optional build system</li>
+                        <li>← <strong>Loaders</strong>: File type processors (babel-loader, css-loader)</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Vite (build tool choice)</li>
+                        <li>Some ESM modules</li>
+                        <li>Certain SSR frameworks</li>
+                        <li>Some testing environments</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Complex configuration can be overwhelming
+                </div>
+            </div>
+
+            <!-- Babel -->
+            <div class="tech">
+                <h3>Babel</h3>
+                <p><strong>Purpose:</strong> JavaScript compiler and transpiler</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Transpiles modern JavaScript to older versions</li>
+                    <li>Polyfills missing features</li>
+                    <li>Transforms JSX/TSX to JavaScript</li>
+                    <li>Plugin-based transformation pipeline</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li>Modern JavaScript/TypeScript code</li>
+                    <li><code>babel.config.js</code> (configuration)</li>
+                    <li>Presets and plugins</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Browser-compatible JavaScript</li>
+                    <li>Source maps for debugging</li>
+                    <li>Transformed JSX/TSX</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>↔ <strong>Webpack/Vite</strong>: Build system integration</li>
+                        <li>→ <strong>TypeScript</strong>: Type checking after transpilation</li>
+                        <li>← <strong>ESLint</strong>: Code quality checks</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Native ESM in modern browsers</li>
+                        <li>TypeScript's own transpiler</li>
+                        <li>Some experimental JavaScript features</li>
+                    </ul>
+                </div>
+                <div class="status">
+                    <strong>Status:</strong> Mature
+                    <ul>
+                        <li>Industry standard for JavaScript transpilation</li>
+                        <li>Widely adopted and well-maintained</li>
+                        <li>Essential for cross-browser compatibility</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Configuration can be complex with many plugins
+                </div>
+            </div>
+
+            <!-- TypeScript -->
+            <div class="tech">
+                <h3>TypeScript</h3>
+                <p><strong>Purpose:</strong> Typed superset of JavaScript</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Adds static type checking to JavaScript</li>
+                    <li>Provides modern language features</li>
+                    <li>Enables better IDE support and tooling</li>
+                    <li>Compiles to JavaScript</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li><code>.ts</code> and <code>.tsx</code> files</li>
+                    <li><code>tsconfig.json</code> (configuration)</li>
+                    <li>Type definitions (<code>@types/*</code>)</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Compiled JavaScript files</li>
+                    <li>Type declaration files (<code>.d.ts</code>)</li>
+                    <li>Source maps for debugging</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>↔ <strong>Babel</strong>: TypeScript transpilation</li>
+                        <li>→ <strong>ESLint</strong>: Type-aware linting</li>
+                        <li>← <strong>React/Vue</strong>: Framework type definitions</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Untyped JavaScript libraries</li>
+                        <li>Some build tool configurations</li>
+                        <li>Certain testing frameworks</li>
+                    </ul>
+                </div>
+                <div class="status">
+                    <strong>Status:</strong> Actual
+                    <ul>
+                        <li>Industry standard for type safety</li>
+                        <li>Strong Microsoft backing</li>
+                        <li>Essential for large-scale applications</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Learning curve for complex types
+                </div>
+            </div>
+
+            <!-- ESLint -->
+            <div class="tech">
+                <h3>ESLint</h3>
+                <p><strong>Purpose:</strong> JavaScript/TypeScript linter</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Static code analysis</li>
+                    <li>Enforces coding standards</li>
+                    <li>Catches common errors</li>
+                    <li>Supports custom rules</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li>JavaScript/TypeScript files</li>
+                    <li><code>.eslintrc.js</code> (configuration)</li>
+                    <li>Custom plugins and rules</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Linting reports</li>
+                    <li>Auto-fix suggestions</li>
+                    <li>IDE integration feedback</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>↔ <strong>TypeScript</strong>: Type-aware linting</li>
+                        <li>→ <strong>Prettier</strong>: Code formatting</li>
+                        <li>← <strong>IDEs</strong>: Real-time feedback</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Some Prettier configurations</li>
+                        <li>Certain build tool setups</li>
+                        <li>Some testing frameworks</li>
+                    </ul>
+                </div>
+                <div class="status">
+                    <strong>Status:</strong> Mature
+                    <ul>
+                        <li>Industry standard linter</li>
+                        <li>Extensive plugin ecosystem</li>
+                        <li>Essential for code quality</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Rule conflicts can be complex
+                </div>
+            </div>
+
+            <!-- Prettier -->
+            <div class="tech">
+                <h3>Prettier</h3>
+                <p><strong>Purpose:</strong> Code formatter</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Enforces consistent code style</li>
+                    <li>Supports multiple languages</li>
+                    <li>Automatically formats code</li>
+                    <li>Integrates with editors</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li>Source code files</li>
+                    <li><code>.prettierrc</code> (configuration)</li>
+                    <li>Ignore patterns</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Formatted code</li>
+                    <li>Consistent style across team</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>↔ <strong>ESLint</strong>: Code quality pipeline</li>
+                        <li>→ <strong>Git Hooks</strong>: Pre-commit formatting</li>
+                        <li>← <strong>IDEs</strong>: Editor integration</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Some ESLint rules</li>
+                        <li>Custom formatting tools</li>
+                        <li>Certain build processes</li>
+                    </ul>
+                </div>
+                <div class="status">
+                    <strong>Status:</strong> Mature
+                    <ul>
+                        <li>Industry standard formatter</li>
+                        <li>Wide language support</li>
+                        <li>Essential for team consistency</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Can conflict with custom formatting
+                </div>
+            </div>
+
+            <!-- Axios -->
+            <div class="tech">
+                <h3>Axios</h3>
+                <p><strong>Purpose:</strong> HTTP client</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Makes HTTP requests</li>
+                    <li>Handles request/response interceptors</li>
+                    <li>Supports request cancellation</li>
+                    <li>Automatic JSON transformation</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li>Request configurations</li>
+                    <li>API endpoints</li>
+                    <li>Request/response interceptors</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>HTTP responses</li>
+                    <li>Error handling</li>
+                    <li>Request/response transformations</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>↔ <strong>React/Vue</strong>: Data fetching</li>
+                        <li>→ <strong>TypeScript</strong>: Type definitions</li>
+                        <li>← <strong>Node.js</strong>: Server-side requests</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Native fetch API</li>
+                        <li>Some SSR frameworks</li>
+                        <li>Certain testing environments</li>
+                    </ul>
+                </div>
+                <div class="status">
+                    <strong>Status:</strong> Mature
+                    <ul>
+                        <li>Industry standard HTTP client</li>
+                        <li>Wide browser support</li>
+                        <li>Stable and reliable</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Bundle size in browser
+                </div>
+            </div>
+
+            <!-- Pinia -->
+            <div class="tech">
+                <h3>Pinia</h3>
+                <p><strong>Purpose:</strong> Vue state management</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Type-safe state management</li>
+                    <li>Composition API integration</li>
+                    <li>DevTools support</li>
+                    <li>Modular stores</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li>Store definitions</li>
+                    <li>State and actions</li>
+                    <li>Vue components</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Reactive state</li>
+                    <li>Composable stores</li>
+                    <li>Type-safe actions</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>← <strong>Vue 3</strong>: Official state management</li>
+                        <li>↔ <strong>TypeScript</strong>: Type safety</li>
+                        <li>→ <strong>Vue DevTools</strong>: Debugging</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Vuex</li>
+                        <li>Some SSR setups</li>
+                        <li>Certain testing patterns</li>
+                    </ul>
+                </div>
+                <div class="status">
+                    <strong>Status:</strong> Fresh
+                    <ul>
+                        <li>Vue 3's recommended solution</li>
+                        <li>Growing adoption</li>
+                        <li>Active development</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Migration from Vuex required
+                </div>
+            </div>
+
+            <!-- Redux -->
+            <div class="tech">
+                <h3>Redux</h3>
+                <p><strong>Purpose:</strong> Predictable state container</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Centralized state management</li>
+                    <li>Predictable state updates</li>
+                    <li>Middleware support</li>
+                    <li>DevTools integration</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li>Actions and reducers</li>
+                    <li>Middleware</li>
+                    <li>Store configuration</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Predictable state updates</li>
+                    <li>Time-travel debugging</li>
+                    <li>State persistence</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>↔ <strong>React</strong>: State management</li>
+                        <li>→ <strong>Redux Toolkit</strong>: Modern Redux</li>
+                        <li>← <strong>TypeScript</strong>: Type safety</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Local component state</li>
+                        <li>Some SSR frameworks</li>
+                        <li>Certain testing approaches</li>
+                    </ul>
+                </div>
+                <div class="status">
+                    <strong>Status:</strong> Mature
+                    <ul>
+                        <li>Industry standard for React</li>
+                        <li>Strong ecosystem</li>
+                        <li>Stable and battle-tested</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Boilerplate code
+                </div>
+            </div>
+
+            <!-- Vitest -->
+            <div class="tech">
+                <h3>Vitest</h3>
+                <p><strong>Purpose:</strong> Vite-native test runner</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Fast test execution</li>
+                    <li>TypeScript support</li>
+                    <li>UI testing</li>
+                    <li>Snapshot testing</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li>Test files</li>
+                    <li>Source code</li>
+                    <li>Test configuration</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Test results</li>
+                    <li>Coverage reports</li>
+                    <li>Test snapshots</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>← <strong>Vite</strong>: Native integration</li>
+                        <li>↔ <strong>TypeScript</strong>: Type checking</li>
+                        <li>→ <strong>Testing Library</strong>: Component testing</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Jest configurations</li>
+                        <li>Some build tools</li>
+                        <li>Certain CI environments</li>
+                    </ul>
+                </div>
+                <div class="status">
+                    <strong>Status:</strong> Fresh
+                    <ul>
+                        <li>Growing adoption</li>
+                        <li>Modern testing solution</li>
+                        <li>Active development</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Migration from Jest required
+                </div>
+            </div>
+
+            <!-- Mocha -->
+            <div class="tech">
+                <h3>Mocha</h3>
+                <p><strong>Purpose:</strong> JavaScript test framework</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Test organization</li>
+                    <li>Async testing</li>
+                    <li>Test reporting</li>
+                    <li>Browser testing</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li>Test files</li>
+                    <li>Assertion libraries</li>
+                    <li>Test configuration</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Test results</li>
+                    <li>Coverage reports</li>
+                    <li>Test documentation</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>↔ <strong>Chai</strong>: Assertions</li>
+                        <li>→ <strong>Node.js</strong>: Test environment</li>
+                        <li>← <strong>TypeScript</strong>: Type checking</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Jest ecosystem</li>
+                        <li>Some build tools</li>
+                        <li>Certain CI setups</li>
+                    </ul>
+                </div>
+                <div class="status">
+                    <strong>Status:</strong> Mature
+                    <ul>
+                        <li>Flexible testing framework</li>
+                        <li>Wide adoption</li>
+                        <li>Stable and reliable</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Requires additional assertion library
+                </div>
+            </div>
+
+            <!-- Jest -->
+            <div class="tech">
+                <h3>Jest</h3>
+                <p><strong>Purpose:</strong> JavaScript testing framework</p>
+                <p><strong>What it does:</strong></p>
+                <ul>
+                    <li>Test runner and assertions</li>
+                    <li>Mocking and spying</li>
+                    <li>Snapshot testing</li>
+                    <li>Code coverage</li>
+                </ul>
+                <p><strong>Inputs:</strong></p>
+                <ul>
+                    <li>Test files</li>
+                    <li>Source code</li>
+                    <li>Jest configuration</li>
+                </ul>
+                <p><strong>Outputs:</strong></p>
+                <ul>
+                    <li>Test results</li>
+                    <li>Coverage reports</li>
+                    <li>Test snapshots</li>
+                </ul>
+                <div class="connection">
+                    <strong>Connections:</strong>
+                    <ul>
+                        <li>↔ <strong>React</strong>: Component testing</li>
+                        <li>→ <strong>TypeScript</strong>: Type checking</li>
+                        <li>← <strong>Testing Library</strong>: DOM testing</li>
+                    </ul>
+                </div>
+                <div class="conflicts">
+                    <strong>Conflicts with:</strong>
+                    <ul>
+                        <li>Some build tools</li>
+                        <li>Certain CI environments</li>
+                        <li>Some ESM modules</li>
+                    </ul>
+                </div>
+                <div class="status">
+                    <strong>Status:</strong> Mature
+                    <ul>
+                        <li>Industry standard</li>
+                        <li>Facebook backed</li>
+                        <li>Comprehensive solution</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Gotcha:</strong> Configuration can be complex
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Complete Workflow Diagram</h2>
+    <div class="workflow">
+        <pre>[Node.js Runtime]
+  │
+  ├─ ESM/CJS Modules → npm/yarn/pnpm → node_modules
+  │       │
+  │       ├─ React → Vite → Browser (SPA)
+  │       │   │
+  │       │   └─ Tailwind → PostCSS → Optimized CSS
+  │       │
+  │       ├─ Vue → Nuxt.js → SSR/Static
+  │       │
+  │       └─ Express → PM2/Docker (API Server)
+  │
+  └─ Node Polyfills ← Webpack/Vite → Browser Compatibility</pre>
+    </div>
+
+    <h2>How to Use This Document</h2>
+    <div class="usage-guide">
+        <ol>
+            <li><strong>Save as HTML</strong>: Copy this code → paste into text editor → save as <code>nodejs-reference.html</code></li>
+            <li><strong>Search</strong>: Use Ctrl+F to find specific technologies</li>
+            <li><strong>Print</strong>: Browser print (Ctrl+P) saves as PDF with layout preserved</li>
+        </ol>
+    </div>
+</body>
+</html>
